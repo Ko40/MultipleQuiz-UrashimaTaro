@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Urashima Taro</title>
+    <style>
+        .correct-answer {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Urashima Quiz</h1>
+
+    <form id="quizForm">
+        <!-- Frage 1 -->
+        <h3>Frage 1: Warum warf Taro die Kinder am Strand weg?</h3>
+        <label><input type="radio" name="q1" value="A"> A) Weil sie laut spielten.</label><br>
+        <label><input type="radio" name="q1" value="B"> B) Weil sie ihn ärgerten.</label><br>
+        <label><input type="radio" name="q1" value="C"> C) Weil sie eine Schildkröte quälten.</label><br>
+        <label><input type="radio" name="q1" value="D"> D) Weil sie ihn nicht respektierten.</label><br>
+        <label><input type="radio" name="q1" value="E"> E) Weil sie sein Boot beschädigten.</label><br>
+        <p id="q1-correct" class="correct-answer"></p>
+
+        <!-- Frage 2 -->
+        <h3>Frage 2: Wie reagierte die Schildkröte, nachdem Taro sie gerettet hatte?</h3>
+        <label><input type="radio" name="q2" value="A"> A) Sie verschwand sofort im Meer.</label><br>
+        <label><input type="radio" name="q2" value="B"> B) Sie sprach zu Taro und dankte ihm.</label><br>
+        <label><input type="radio" name="q2" value="C"> C) Sie brachte Taro einen Fisch.</label><br>
+        <label><input type="radio" name="q2" value="D"> D) Sie blieb am Strand liegen.</label><br>
+        <label><input type="radio" name="q2" value="E"> E) Sie weinte vor Glück.</label><br>
+        <p id="q2-correct" class="correct-answer"></p>
+
+        <!-- Frage 3 -->
+        <h3>Frage 3: Was gab die Prinzessin Otohime Taro, bevor er den Palast verließ?</h3>
+        <label><input type="radio" name="q3" value="A"> A) Ein Schwert.</label><br>
+        <label><input type="radio" name="q3" value="B"> B) Eine Krone.</label><br>
+        <label><input type="radio" name="q3" value="C"> C) Eine kleine Schachtel.</label><br>
+        <label><input type="radio" name="q3" value="D"> D) Eine goldene Münze.</label><br>
+        <label><input type="radio" name="q3" value="E"> E) Eine Landkarte.</label><br>
+        <p id="q3-correct" class="correct-answer"></p>
+
+        <!-- Frage 4 -->
+        <h3>Frage 4: Warum war Taro verwirrt, als er an den Strand zurückkam?</h3>
+        <label><input type="radio" name="q4" value="A"> A) Sein Boot war gestohlen worden.</label><br>
+        <label><input type="radio" name="q4" value="B"> B) Seine Familie war nicht mehr da, und das Dorf war verändert.</label><br>
+        <label><input type="radio" name="q4" value="C"> C) Es war Nacht und er konnte nichts sehen.</label><br>
+        <label><input type="radio" name="q4" value="D"> D) Niemand wollte ihm helfen.</label><br>
+        <label><input type="radio" name="q4" value="E"> E) Die Schildkröte sprach nicht mehr zu ihm.</label><br>
+        <p id="q4-correct" class="correct-answer"></p>
+
+        <!-- Frage 5 -->
+        <h3>Frage 5: Was passierte, als Taro die Schachtel öffnete?</h3>
+        <label><input type="radio" name="q5" value="A"> A) Er fand darin Gold und Edelsteine.</label><br>
+        <label><input type="radio" name="q5" value="B"> B) Er wurde in einen jungen Mann verwandelt.</label><br>
+        <label><input type="radio" name="q5" value="C"> C) Weißer Rauch kam heraus und er alterte schnell.</label><br>
+        <label><input type="radio" name="q5" value="D"> D) Die Schachtel verschwand spurlos.</label><br>
+        <label><input type="radio" name="q5" value="E"> E) Ein Sturm zog plötzlich auf.</label><br>
+        <p id="q5-correct" class="correct-answer"></p>
+
+        <br>
+        <input type="button" value="Ergebnisse anzeigen" onclick="calculateScore()">
+    </form>
+
+    <h2 id="score"></h2>
+
+    <script>
+        function calculateScore() {
+            // Richtige Antworten
+            const correctAnswers = {
+                q1: 'C',
+                q2: 'B',
+                q3: 'C',
+                q4: 'B',
+                q5: 'C'
+            };
+
+            let score = 0;
+            const form = document.forms['quizForm'];
+
+            // Durch alle Fragen iterieren
+            for (let question in correctAnswers) {
+                const userAnswer = form[question].value;
+                const correctAnswer = correctAnswers[question];
+
+                // Richtig oder falsch überprüfen und Punkt hinzufügen
+                if (userAnswer === correctAnswer) {
+                    score++;
+                }
+
+                // Richtige Antwort anzeigen
+                document.getElementById(`${question}-correct`).innerText = `Die richtige Antwort ist: ${correctAnswer}`;
+            }
+
+            // Score anzeigen
+            document.getElementById('score').innerText = `Dein Ergebnis: ${score}/5`;
+        }
+    </script>
+</body>
+</html>
